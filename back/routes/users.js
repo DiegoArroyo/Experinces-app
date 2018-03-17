@@ -1,9 +1,18 @@
-var express = require('express');
-var router = express.Router();
+const express        = require('express');
+const router         = express.Router();
+const passport       = require("passport");
+const LocalStrategy  = require('passport-local').Strategy;
+const controller     = require('../controllers/auth.controller') ;
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+function checkIfSignedIn(req,res, next){
+  if(req.isAuthenticated()) return next()
+  res.status(401).json({ message: 'Unauthorized' });
+}
+
+router.post('/signup', controller.signUp) 
+.post('/signin', passport.authenticate('local'), controller.signIn)
+.post('/signout', controller.signOut)
+.get('/signedin', controller.signedIn)
+.get('/private', checkIfSignedIn, controller.private)
 
 module.exports = router;

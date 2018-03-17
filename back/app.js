@@ -4,22 +4,26 @@ const favicon       = require('serve-favicon');
 const logger        = require('morgan');
 const cookieParser  = require('cookie-parser');
 const bodyParser    = require('body-parser');
+const passport      = require('passport');
+const session       = require("express-session");
+const cors          = require("cors");
+
+const experience  = require('./routes/experience');
+const auth        = require('./routes/users');
+
+const app = express(); 
 
 const mongoose      = require('mongoose');
-mongoose.connect("mongodb://localhost/experience-local-app");
+mongoose.connect("mongodb://localhost/experience-local-app")
+  .then(console.log("Connected to DB!!"))
 
-// Session
-// app.use(session({
-//   secret: "experience-local-app",
-//   resave: true,
-//   saveUninitialized: true,
-//   cookie: { httpOnly: true, maxAge: 2419200000 }
-// }));
+const corsOptions = {
+  origin: true,
+  credentials: true
+};
+app.use(cors(corsOptions));
 
-const users = require('./routes/users');
-const experience = require('./routes/experience');
-
-var app = express();
+app.use(express.static(path.join(__dirname, 'public')));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,11 +35,21 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
+
+// Session
+app.use(session({
+  secret: "experience-local-app",
+  resave: true,
+  saveUninitialized: true,
+  cookie: { httpOnly: true, maxAge: 2419200000 }
+}));
+
+// Passport Config
+require('./helpers/passport')(passport,app);
 
 app.use('/', experience);
-app.use('/users', users);
+app.use('/auth', auth);
 
 
 // catch 404 and forward to error handler

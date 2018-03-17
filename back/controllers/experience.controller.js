@@ -1,18 +1,24 @@
 const Experience = require('../models/Experience');
 
-exports.deleteExperince = (req, res, next) => {
+exports.deleteItem = (req, res, next) => {
   Experience.findByIdAndRemove(req.params.id)
   .then(experience => res.status(200).json(experience))
   .catch(err => res.status(500).send(err));
 }
 
-exports.patchExperience = (req, res, next) => {
-  Experience.findByIdAndUpdate(req.params.id, req.body)
+exports.patchItem = (req, res, next) => {
+  Experience.findByIdAndUpdate(req.params.id, req.body, {new: true})
   .then(experience => res.status(200).json(experience))
   .catch(err => res.status(500).send(err));
 }
 
-exports.postExperience = (req, res, next) => {
+exports.fetchItem = (req, res, next) => {
+ Experience.findById(req.params.id)
+ .then(experience => res.status(200).json(experience))
+ .catch(err => res.status(500).send(err));
+}
+
+exports.postItem = (req, res, next) => {
   const newExperience = new Experience({
     title:        req.body.title,
     description:  req.body.description,
@@ -24,7 +30,8 @@ exports.postExperience = (req, res, next) => {
       sex:    req.body.sex,
       email:  req.body.email
     }],
-    places:        req.body.places,
+    includes:     req.body.includes,
+    places:       req.body.places,
     duration:     req.body.duration
   });
 
@@ -33,7 +40,7 @@ exports.postExperience = (req, res, next) => {
   .catch(err => res.status(500).send(err));
 }
 
-exports.getExperience = (req, res, next) => {
+exports.getItems = (req, res, next) => {
   Experience.find()
   .then(experiences => res.status(200).json(experiences))
   .catch(err => res.status(500).send(err));

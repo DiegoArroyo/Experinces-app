@@ -1,0 +1,36 @@
+<p><a [routerLink]="['/']" >Go Home</a></p>
+<section class="main-container" *ngIf="item">
+  <div class="slider-start">
+      <ul class="slides">
+        <li>
+          <!-- <img [src]="item.picture" [alt]="item.title"> -->
+          <img src="http://localhost:3000/{{item.picture}}" alt="{{item.title}}">
+        </li>
+      </ul>
+  </div>
+  <article class="experience-container">
+    <div>
+      <h1>{{item.title}}</h1>
+      <p>{{item.description}}</p>
+    </div>
+    <div>
+      <h5>For {{item.places}} people.</h5>
+    </div>
+    <div>
+      <p>${{item.price}}</p>
+      <a class="waves-effect waves-light btn-large" [routerLink]="['/']" >Buy Now</a>
+    </div>
+    <div>
+      <h5>What includes your experience:</h5>
+      <p>{{item.includes}}</p>
+    </div>
+    <div>
+      <h5>Duration:</h5>
+      <p>{{item.duration}}</p>
+    </div>
+  </article>
+  <div>
+    <a class="waves-effect waves-light btn-large" [routerLink]="['/']" >Edit</a>
+    <a class="waves-effect waves-light btn-large" [routerLink]="['/']" >Delete</a>
+  </div>
+</section>

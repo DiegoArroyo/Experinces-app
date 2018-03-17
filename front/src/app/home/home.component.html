@@ -1,0 +1,23 @@
+<section>
+  <article  class="main-container" >
+    <div class="titles-container">
+      <h2>Best Experiences</h2>
+    </div>
+    <div class="experiences-wraper">
+      <div class="card medium" *ngFor="let item of itemList" >
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="http://localhost:3000/{{item.picture}}" alt="{{item.title}}" >
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">{{item.title}}<i class="material-icons right">more_vert</i></span>
+          <p>${{item.price}}</p>
+          <p><a [routerLink]="['experience/', item._id]" >Go to Detail</a></p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">{{item.title}}<i class="material-icons right">close</i></span>
+          <p>{{item.description}}.</p>
+        </div>
+      </div>
+    </div>
+  </article>  
+</section>

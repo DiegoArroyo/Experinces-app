@@ -1,0 +1,15 @@
+
+.experiences-wraper{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.card {
+  margin: 10px;
+}
+.card-image {
+  width: 400px;
+  height: auto;
+}
