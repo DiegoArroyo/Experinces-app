@@ -6,13 +6,14 @@ const experienceSchema = new Schema({
   title:        { type: String, required: true },
   description:  { type: String, required: true },
   price:        { type: Number, required: true },
-  pictures:    [{ type: String }],
+  picture:      { type: String, default: 'images/img-default.png'},
   passengers:     [{ 
     name:   { type: String  },
     age:    { type: Number  },
     sex:    { type: String  },
     email:  { type: String  }
   }],
+  includes:     { type: String, required: true },
   places:       { type: Number, required: true },
   duration:     { type: String, required: true },
 });
