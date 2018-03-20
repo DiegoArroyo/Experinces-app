@@ -7,6 +7,7 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class ExperienceService {
+  baseURL = 'http://localhost:3000/api/experience';
 
   constructor(private http: Http) { }
 
@@ -15,35 +16,35 @@ export class ExperienceService {
   }
 
   remove(id): Observable<any> {
-    return this.http.delete(`http://localhost:3000/${id}`)
+    return this.http.delete(`${this.baseURL}/${id}`)
     .map((res: Response) => res.json())
     .map(item => item)
     .catch( err => this.handleError(err));
   }
 
   patch(item): Observable<any> {
-    return this.http.patch(`http://localhost:3000/${item._id}`, item)
+    return this.http.patch(`${this.baseURL}/${item._id}`, item)
     .map((res: Response) => res.json())
     .map(item => item)
     .catch(err => this.handleError(err));
   }
 
   add(item): Observable<any> {
-    return this.http.post('http://localhost:3000', item)
+    return this.http.post(`${this.baseURL}/new`, item)
     .map((res: Response) => res.json())
     .map(item => item)
     .catch(err => this.handleError(err));
   }
 
   detail(id): Observable<any> {
-    return this.http.get(`http://localhost:3000/${id}`)
+    return this.http.get(`${this.baseURL}/${id}`)
     .map((res: Response) => res.json())
     .map(item => item)
     .catch(err => this.handleError(err));
   }
 
   all(): Observable<any> {
-    return this.http.get('http://localhost:3000')
+    return this.http.get(`${this.baseURL}`)
     .map((res: Response) => res.json())
     .map(items => items)
     .catch(err => this.handleError(err));

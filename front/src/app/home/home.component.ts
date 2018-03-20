@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
 
   itemList: Array<Object>;
 
-   allItems() {
+  allItems() {
     this.itemService.all()
     .subscribe(items => this.itemList = items);
   }

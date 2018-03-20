@@ -1,1 +1,22 @@
+<header>
+  <nav>
+    <div class="nav-wrapper blue text-lighten-3">
+      <a class="brand-logo center">Experiencias</a>
+      <ul *ngIf="!user" id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a [routerLink]="['/']"><i class="material-icons left">home</i>Home</a></li>
+        <li><a [routerLink]="['signin']">Sign-In</a></li>
+        <li><a [routerLink]="['signup']">Sign-Up</a></li>
+      </ul>
+      <ul *ngIf="user" id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a [routerLink]="['/']"><i class="material-icons left">home</i>Home</a></li>
+        <li><a [routerLink]="['private']"><i class="material-icons left">account_circle</i>{{user.username}}</a></li>
+        <li><a (click)="signOut()">Sign-Out</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
 <router-outlet></router-outlet>
+<footer>
+    <p>Experiencias © | 2018</p>
+    <p>Made by Diego Arroyo</p>
+</footer>

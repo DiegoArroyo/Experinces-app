@@ -9,7 +9,8 @@ const session       = require("express-session");
 const cors          = require("cors");
 
 const experience  = require('./routes/experience');
-const auth        = require('./routes/users');
+const auth        = require('./routes/auth')
+const user    = require('./routes/user');
 
 const app = express(); 
 
@@ -48,8 +49,10 @@ app.use(session({
 // Passport Config
 require('./helpers/passport')(passport,app);
 
-app.use('/', experience);
-app.use('/auth', auth);
+
+app.use('/api/experience', experience);
+app.use('/api/auth', auth);
+app.use('/api/user', user);
 
 
 // catch 404 and forward to error handler

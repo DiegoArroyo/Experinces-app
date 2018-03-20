@@ -1,10 +1,9 @@
-<p><a [routerLink]="['/']" >Go Home</a></p>
 <section class="main-container" *ngIf="item">
-  <div class="slider-start">
+  <div class="slider-start" *ngFor="let pic of item.pictures">
       <ul class="slides">
         <li>
           <!-- <img [src]="item.picture" [alt]="item.title"> -->
-          <img src="http://localhost:3000/{{item.picture}}" alt="{{item.title}}">
+          <img [src]="'http://localhost:3000/'+ pic" alt="{{item.title}}">
         </li>
       </ul>
   </div>
@@ -18,7 +17,7 @@
     </div>
     <div>
       <p>${{item.price}}</p>
-      <a class="waves-effect waves-light btn-large" [routerLink]="['/']" >Buy Now</a>
+      <a class="waves-effect waves-light btn-large" [routerLink]="['/']" >Reserve Now</a>
     </div>
     <div>
       <h5>What includes your experience:</h5>

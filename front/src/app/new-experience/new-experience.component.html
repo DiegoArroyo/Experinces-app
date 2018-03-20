@@ -1,0 +1,28 @@
+
+  <form (ngSubmit)="newItem(myForm)" #myForm="ngForm">
+      <p> title
+        <input type="text" name="title" [(ngModel)]="title" />
+      </p>
+      <p> Description
+        <input type="text" name="description" [(ngModel)]="description" />
+      </p>
+      <p> price
+          <input type="text" name="price" [(ngModel)]="price" />
+      </p>
+      <p> includes
+          <input type="text" name="includes" [(ngModel)]="includes" />
+      </p>
+      <p> places
+          <input type="text" name="places" [(ngModel)]="places" />
+      </p>
+      <p> duration
+          <input type="text" name="duration" [(ngModel)]="duration" />
+      </p>
+      <p> location
+          <input type="text" name="location" [(ngModel)]="location" />
+      </p>
+      <p> Img
+            <input type="file" name="file" ng2FileSelect [uploader]="uploader" />      
+        </p>
+      <button type="submit"> signup </button>
+    </form>

@@ -16,6 +16,9 @@ export class DetailComponent implements OnInit {
     private service: ExperienceService
   ) { }
 
+  editItem() {
+  }
+
   ngOnInit() {
   this.route.params.subscribe(params => {
     this.service.detail(params['id'])

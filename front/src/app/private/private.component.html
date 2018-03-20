@@ -1,3 +1,37 @@
-<p>
-  private works!
-</p>
+<section class="account-container">
+  <div class="page-title" class="center-align">
+    <h2>My Control Panel</h2>
+  </div>
+  <article class="box">
+    <div class="welcome-message">
+
+      <p>Hi {{user.username}} !</p>
+      <img [src]="'http://localhost:3000/'+ user.avatar" alt="">
+      <p>
+      From your My Account on your desktop you have the possibility to view 
+      a summary of your recent activity of the account and update your account
+      information. Choose one of the following links to view or modify the information.
+      </p>
+    </div>
+    <div class="account-info-container">
+      <div class="box-head">
+        <h2>Account Information</h2>
+        <div class="box-title">
+          <h3>Contact Information</h3>
+          <a [routerLink]="['/:id/edit', user._id]">Modify</a>
+          <div class="box-content">
+            {{user.username}}
+            <br>
+            {{user.email}}
+            <br>
+            {{user.role}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+  <div>
+    <p>Create new Experience: </p>
+    <a [routerLink]="['/experience/new']">Modify</a>
+  </div>
+</section>

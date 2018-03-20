@@ -1,0 +1,18 @@
+.account-container{
+  
+}
+.box{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.welcome-message{
+  padding: 10px 200px;
+}
+
+.account-info-container{
+  display: flex;
+
+}
