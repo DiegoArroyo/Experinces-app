@@ -16,9 +16,7 @@ module.exports = function (passport,app) {
   });
 
   passport.use(new LocalStrategy((username, password, next) => {
-    console.log(username,password)
     User.findOne({ username }, (err, user) => {
-      console.log(user)
       if (err) { return next(err); }
       if (!user) { return next(null, false, { message: "Incorrect username" }); }
       if (!bcrypt.compareSync(password, user.password)) { return next(null, false, { message: "Incorrect password" }); }

@@ -17,9 +17,9 @@ exports.signup = (req,res,next) => {
 
     let hashPass  = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(9), null);
     let newUser   = new User({
-      username: req.body.username,
-      password: hashPass,
-      email: req.body.email
+      username  :   req.body.username,
+      password  :   hashPass,
+      email     :   req.body.email
     });
 
     newUser.save()
@@ -57,13 +57,4 @@ exports.signedin = (req, res, next) => {
   }
   res.status(403).json({ message: 'Unauthorized' });
 }
-
-// exports.userData = (req, res, next) => {
-//   if(req.user){
-//     User.findById(req.user._id)
-//       .populate('favItems')
-//       .then(user => res.status(200).json(user))
-//       .catch(e => res.status(500).json(e))
-//   }
-// }
 

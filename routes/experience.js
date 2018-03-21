@@ -12,11 +12,13 @@ checkEnterprise = (req, res, next) =>{
   }
 };
 
-router.get('/', controller.getItems)
-.post('/new', upload.single('file'), controller.postItem)
-.get('/:id', controller.fetchItem)
-.patch('edit/:id', controller.patchItem)
-.delete('delete/:id', controller.deleteItem)
-.get('/myExperiences', controller.ownedItems);
+router.get('/all', controller.getItems);
+router.post('/new', upload.single('file'), controller.postItem);
+router.get('/detail/:id', controller.fetchItem);
+router.patch('/edit/:id', controller.patchItem);
+router.delete('/delete/:id', controller.deleteItem);
+router.post('/addPhoto/:id', upload.any(), controller.addPhoto);
+router.post('/addFavorite/:id', controller.addFavorite);
+router.post('/booking/:id', controller.addBooking);
 
 module.exports = router
