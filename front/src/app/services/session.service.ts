@@ -3,10 +3,12 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class SessionService {
-  baseURL = 'http://localhost:3000/api/auth';
+
+  baseURL = environment.baseURL + 'api/auth';
   user: any;
   loginEvent: EventEmitter<any> = new EventEmitter();
   options = { withCredentials: true };
@@ -29,7 +31,7 @@ export class SessionService {
   }
 
   signOut(): Observable<any> {
-    return this.http.post(`${this.baseURL}/signout`, {})
+    return this.http.post(`${this.baseURL}/signout`, {} , this.options)
     .map(res => res.json())
     .catch(err => this.handleError(err));
   }
@@ -37,7 +39,7 @@ export class SessionService {
   signIn(signinForm): Observable<any> {
     return this.http.post(`${this.baseURL}/signin`, signinForm, this.options)
     .map(res => res.json())
-    .map(user => { this.loginEvent.emit(user); this.user = user; return user;})
+    .map(user => { this.loginEvent.emit(user); this.user = user; return user; })
     .catch(err => this.handleError(err));
   }
 

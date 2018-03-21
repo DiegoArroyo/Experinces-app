@@ -10,14 +10,14 @@ const user = [
     username  : "Experiences",
     password  : bcrypt.hashSync("hola", salt),
     email     : "experiencies@gmail.com",
-    avatar    : "https://www.springboard.com/images/springboard/default-profile-mentor-rounded@2x.70dc0c67.png",
+    avatar    : "/images/default-profile.png",
     role      : "ENTERPRISE"
 },
 {
     username  : "Diego",
     password  : bcrypt.hashSync("hola", salt),
     email     : "arroyo@gmail.com",
-    avatar    : "https://www.springboard.com/images/springboard/default-profile-mentor-rounded@2x.70dc0c67.png",
+    avatar    : "/images/default-profile.png",
     role      : "ADMIN"
 
 }

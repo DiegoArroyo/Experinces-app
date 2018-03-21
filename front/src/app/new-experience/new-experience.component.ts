@@ -8,19 +8,16 @@ import { FileUploader } from 'ng2-file-upload';
   templateUrl: './new-experience.component.html',
   styleUrls: ['./new-experience.component.css']
 })
+
 export class NewExperienceComponent implements OnInit {
 
   uploader: FileUploader = new FileUploader({
     url: `http://localhost:3000/api/experience/new`
   });
 
-  constructor(
-    private itemService: ExperienceService,
-    private router: Router
-  ) { }
+  constructor(private itemService: ExperienceService, private router: Router) { }
 
   itemNew: Object;
-  
 
   newItem(itemForm) {
     this.uploader.onBuildItemForm = (item, form) => {

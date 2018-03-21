@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express       = require('express');
 const path          = require('path');
 const favicon       = require('serve-favicon');
@@ -10,13 +11,18 @@ const cors          = require("cors");
 
 const experience  = require('./routes/experience');
 const auth        = require('./routes/auth')
-const user    = require('./routes/user');
+const user        = require('./routes/user');
+const booking     = require('./routes/booking');
 
 const app = express(); 
 
 const mongoose      = require('mongoose');
 mongoose.connect("mongodb://localhost/experience-local-app")
-  .then(console.log("Connected to DB!!"))
+  .then(console.log(`Connected to ${process.env.mongoURL}`))
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 const corsOptions = {
   origin: true,
@@ -26,9 +32,6 @@ app.use(cors(corsOptions));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -53,7 +56,11 @@ require('./helpers/passport')(passport,app);
 app.use('/api/experience', experience);
 app.use('/api/auth', auth);
 app.use('/api/user', user);
+app.use('/api/booking', booking);
 
+app.all('/*', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html');
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

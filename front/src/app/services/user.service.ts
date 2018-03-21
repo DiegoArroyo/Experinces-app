@@ -3,22 +3,23 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class UserService {
 
   constructor(private http: Http) { }
 
-  baseURL = 'http://localhost:3000/api/user';
+  baseURL = environment.baseURL + 'api/user';
+  options = { withCredentials: true };
 
   handleError(err) {
     return Observable.throw(err.json().message);
   }
 
-  currentUser(id): Observable<any> {
-    return this.http.get(`${this.baseURL}/private/${id}`)
+  currentUser(): Observable<any> {
+    return this.http.get(`${this.baseURL}/private`, this.options)
     .map((res: Response) => res.json())
-    .map(user => user)
     .catch(err => this.handleError(err));
   }
 

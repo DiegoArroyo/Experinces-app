@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionService } from './services/session.service';
-import $ from 'jquery';
+declare var jquery: any;
+declare var $: any;
 
 @Component({
   selector: 'app-root',
@@ -18,13 +19,12 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    
     this.session.getLoginEmitter().subscribe(user => this.successCb(user));
   }
 
   signOut() {
     this.session.signOut().subscribe(() => {
-      this.successCb(null)
+      this.successCb(null);
       },
       (err) => this.errorCb(err));
   }
@@ -39,6 +39,5 @@ export class AppComponent implements OnInit {
     this.error = null;
     this.router.navigate(['/']);
   }
-
 
 }

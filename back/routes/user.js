@@ -8,6 +8,8 @@ function checkIfSignedIn(req, res, next){
   res.status(401).json({ message: 'Unauthorized' });
 }
 
-// router.get('/private/:id', controller.fetchUser)
+router.get('/private', controller.fetchUser);
+router.get('/edit', controller.patchUser);
+router.get('/delete', controller.deleteUser);
 
 module.exports = router;

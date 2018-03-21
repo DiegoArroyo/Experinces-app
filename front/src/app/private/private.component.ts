@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { SessionService } from '../services/session.service';
 import { Router } from '@angular/router';
-import $ from 'jquery';
+import { SessionService } from '../services/session.service';
+import { UserService } from '../services/user.service';
+
+declare var jquery: any;
+declare var $: any;
+
 @Component({
   selector: 'app-private',
   templateUrl: './private.component.html',
@@ -9,16 +13,17 @@ import $ from 'jquery';
 })
 export class PrivateComponent implements OnInit {
 
-  user = {};
+  profile = {};
 
-  constructor(private session: SessionService, private route: Router) { }
+  constructor(
+    private session: SessionService,
+    private route: Router,
+    private userService: UserService
+  ) { }
 
   ngOnInit() {
-    this.session.signedIn()
-    .subscribe(user => {
-      this.user = user;
-      // console.log(this.user);
-      // $('.dropdown-button').dropdown();
+    this.userService.currentUser().subscribe(user => {
+      this.profile = user;
     });
   }
 

@@ -4,10 +4,12 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class ExperienceService {
-  baseURL = 'http://localhost:3000/api/experience';
+
+  baseURL = environment.baseURL + 'api/experience';
 
   constructor(private http: Http) { }
 
@@ -15,36 +17,36 @@ export class ExperienceService {
     return Observable.throw(err.json().message);
   }
 
+// falta llamar el metodo en el componente 
+  addFav(id, user): Observable<any> {
+    return this.http.post(`${this.baseURL}/addFavorite/${id}`, user)
+    .map((res: Response) => res.json())
+    .catch(err => this.handleError(err));
+  }
+
   remove(id): Observable<any> {
-    return this.http.delete(`${this.baseURL}/${id}`)
+    return this.http.delete(`${this.baseURL}/delete/${id}`)
     .map((res: Response) => res.json())
     .map(item => item)
     .catch( err => this.handleError(err));
   }
 
-  patch(item): Observable<any> {
-    return this.http.patch(`${this.baseURL}/${item._id}`, item)
-    .map((res: Response) => res.json())
-    .map(item => item)
-    .catch(err => this.handleError(err));
-  }
-
-  add(item): Observable<any> {
-    return this.http.post(`${this.baseURL}/new`, item)
+  patch(item, id): Observable<any> {
+    return this.http.patch(`${this.baseURL}/edit/${id}`, item)
     .map((res: Response) => res.json())
     .map(item => item)
     .catch(err => this.handleError(err));
   }
 
   detail(id): Observable<any> {
-    return this.http.get(`${this.baseURL}/${id}`)
+    return this.http.get(`${this.baseURL}/detail/${id}`)
     .map((res: Response) => res.json())
     .map(item => item)
     .catch(err => this.handleError(err));
   }
 
   all(): Observable<any> {
-    return this.http.get(`${this.baseURL}`)
+    return this.http.get(`${this.baseURL}/all`)
     .map((res: Response) => res.json())
     .map(items => items)
     .catch(err => this.handleError(err));

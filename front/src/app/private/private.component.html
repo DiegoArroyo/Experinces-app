@@ -4,9 +4,8 @@
   </div>
   <article class="box">
     <div class="welcome-message">
-
-      <p>Hi {{user.username}} !</p>
-      <img [src]="'http://localhost:3000/'+ user.avatar" alt="">
+      <p>Hi {{ profile.user.username }} !</p>
+      <img [src]="'http://localhost:3000/'+ profile.user.avatar" alt="">
       <p>
       From your My Account on your desktop you have the possibility to view 
       a summary of your recent activity of the account and update your account
@@ -18,20 +17,23 @@
         <h2>Account Information</h2>
         <div class="box-title">
           <h3>Contact Information</h3>
-          <a [routerLink]="['/:id/edit', user._id]">Modify</a>
+          <!-- <a [routerLink]="['/:id/edit', profile.user._id]">Modify</a> -->
           <div class="box-content">
-            {{user.username}}
+            {{profile.user.username}}
             <br>
-            {{user.email}}
+            {{profile.user.email}}
             <br>
-            {{user.role}}
+            {{profile.user.role}}
           </div>
         </div>
       </div>
     </div>
+    <div *ngFor="let experience of profile.experience">
+      <p>{{experience.title}}</p>
+    </div>
   </article>
-  <div>
+  <div *ngIf="profile.user.role === 'ENTERPRISE'">
     <p>Create new Experience: </p>
-    <a [routerLink]="['/experience/new']">Modify</a>
+    <a [routerLink]="['/experience/new']">New Experience</a>
   </div>
 </section>

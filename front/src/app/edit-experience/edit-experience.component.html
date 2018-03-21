@@ -1,3 +1,32 @@
-<p>
-  edit-experience works!
-</p>
+<form (ngSubmit)="addPhoto()">
+  <p> Add Photo
+    <input type="file" name="file" ng2FileSelect [uploader]="uploader" multiple/>     
+  </p>
+  <button type="submit">Submit Photo</button>
+</form>
+
+
+<form  (ngSubmit)="editItem(myForm)" #myForm="ngForm" >
+  <p> title
+    <input type="text" name="title" [(ngModel)]="title" value = {{item.title}}/>
+  </p>
+  <p> Description
+    <input type="text" name="description" [(ngModel)]="description" value= {{item.description}}/>
+  </p>
+  <p> price
+    <input type="text" name="price" [(ngModel)]="price" value= {{item.price}}/>
+  </p>
+  <p> includes
+    <input type="text" name="includes" [(ngModel)]="includes" value= {{item.includes}}/>
+  </p>
+  <p> places
+    <input type="text" name="places" [(ngModel)]="places" value= {{item.places}}/>
+  </p>
+  <p> duration
+    <input type="text" name="duration" [(ngModel)]="duration" value= {{item.duration}}/>
+  </p>
+  <p> location
+    <input type="text" name="location" [(ngModel)]="location" value= {{item.location}}/>
+  </p>
+  <button type="submit">Edit Experience</button>
+</form>
