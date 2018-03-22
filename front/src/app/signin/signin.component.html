@@ -1,11 +1,38 @@
-<form (ngSubmit)="signIn(signinForm)" #signinForm="ngForm">
-  <h2> Sign In </h2>
-  <label> Username </label>
-  <input type="text" [(ngModel)]="username" name="username"/>
-  <br>
-  <label> Password </label>
-  <input type="password" [(ngModel)]="password" name="password"/>
-  <br>
-  <button type="submit"> Sign In </button>
-</form>
-<p class="error"> {{ error }} </p>
+<section class="form-container" >
+  <div class="form-control">
+  <form (ngSubmit)="signIn(signinForm)" #signinForm="ngForm">
+      <div class="field">
+        <p class="control has-icons-left has-icons-right">
+          <input class="input" type="text" placeholder="Username" [(ngModel)]="username" name="username">
+          <span class="icon is-small is-left">
+            <i class="fas fa-user"></i>
+          </span>
+          <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+          </span>
+        </p>
+      </div>
+      <div class="field">
+        <p class="control has-icons-left">
+          <input class="input" type="password" placeholder="Password" [(ngModel)]="password" name="password">
+          <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+          </span>
+        </p>
+      </div>
+      <div class="field is-grouped is-grouped-centered">
+        <p class="control">
+          <a class="button is-primary">
+            Submit
+          </a>
+        </p>
+        <p class="control">
+          <a class="button is-light">
+            Cancel
+          </a>
+        </p>
+      </div>
+    </form>
+  </div>
+  <p class="error"> {{ error }} </p>
+</section>

@@ -1,40 +1,39 @@
 <section class="main-container" *ngIf="item">
-  <div class="slider-carrusel">
-      <ul class="slides">
-        <li *ngFor="let pic of item.pictures">
-          <img src="http://localhost:3000{{pic}}" >
-        </li>
-      </ul>
+  <div class="img-container">
+    <ul class="img list">
+      <li *ngFor="let pic of item.pictures">
+        <img src="http://localhost:3000{{pic}}" width="400" height="400">
+      </li>
+    </ul>
   </div>
   <article class="experience-container">
-    <div>
-      <span><a [routerLink]="['/']" ><i class="material-icons left">favorite</i></a></span>
+    <div class="experience">
       <h1>{{item.title}}</h1>
-      <p>{{item.description}}</p>
+      <p><b>{{item.description}}</b></p>
     </div>
-    <div>
+    <div class="experience">
       <h5>For {{item.places}} people.</h5>
     </div>
-    <div>
-      <p>${{item.price}}</p>
-      <a (click)="book()" class="waves-effect waves-light btn-large" [routerLink]="['/']" >Book Now</a>
+    <div class="experience">
+      <h5>${{item.price}} MXN</h5>
     </div>
-    <div>
+    <div class="experience">
       <h5>What includes your experience:</h5>
       <p>{{item.includes}}</p>
     </div>
-    <div>
+    <div class="experience">
       <h5>Duration:</h5>
       <p>{{item.duration}}</p>
     </div>
-    <div>
+    <div class="experience">
       <h5>This is an experience of :</h5>
       <p>{{item._creator.username}}</p>
     </div>
+    <div class="buttons-container">
+      <!-- <a class="waves-effect waves-light btn-large" [routerLink]= "['/experience/edit', item._id]" >Edit</a>
+      <a class="waves-effect waves-light btn-large" [routerLink]= "['/']" >Delete</a> -->
+      <a (click)="addFavorite()" [routerLink]="['/private']" class="waves-effect waves-light red btn-large"><i class="material-icons left">favorite</i>Add to Fav</a>
+      <a (click)="book()" class="waves-effect waves-light btn-large" [routerLink]="['/']" >Book Now</a>
+    </div>
   </article>
-  <div>
-    <a class="waves-effect waves-light btn-large" [routerLink]= "['/experience/edit', item._id]" >Edit</a>
-    <a class="waves-effect waves-light btn-large" [routerLink]= "['/']" >Delete</a>
-    <a (click)="addFavorite()" class="waves-effect waves-light btn-large">Add Favorite</a>
-  </div>
 </section>

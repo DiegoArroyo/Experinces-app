@@ -1,22 +1,52 @@
 <header>
-  <nav>
-    <div class="nav-wrapper blue text-lighten-3">
-      <a class="brand-logo center">Experiencias</a>
-      <ul *ngIf="!user" id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a [routerLink]="['/']"><i class="material-icons left">home</i>Home</a></li>
-        <li><a [routerLink]="['signin']">Sign-In</a></li>
-        <li><a [routerLink]="['signup']">Sign-Up</a></li>
-      </ul>
-      <ul *ngIf="user" id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a [routerLink]="['/']"><i class="material-icons left">home</i>Home</a></li>
-        <li><a [routerLink]="['private']"><i class="material-icons left">account_circle</i>{{user.username}}</a></li>
-        <li><a (click)="signOut()">Sign-Out</a></li>
-      </ul>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" >
+        <a [routerLink]="['/']" ><h3>Experiences</h3></a>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-end">
+        <ul *ngIf="!user" >
+          <li><a [routerLink]="['/']"><i class="material-icons left">home</i>Home</a></li>
+          <li><a [routerLink]="['signin']">Sign-In</a></li>
+          <li><a [routerLink]="['signup']">Sign-Up</a></li>
+        </ul>
+        <ul *ngIf="user">
+            <li><a [routerLink]="['/']"><i class="material-icons left">home</i>Home</a></li>
+            <li><a [routerLink]="['private']"><i class="material-icons left">account_circle</i>{{user.username}}</a></li>
+            <li><a (click)="signOut()">Sign-Out</a></li>
+          </ul><!-- navbar items -->
+      </div>
     </div>
   </nav>
 </header>
 <router-outlet></router-outlet>
-<footer>
-    <p>Experiencias © | 2018</p>
-    <p>Made by Diego Arroyo</p>
+<footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5>Share all your experiences</h5>
+        <p class="text-lighten-4">
+          The best experiences in life at your fingertips.
+        </p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5>Follow Me</h5>
+        <ul>
+          <li>
+            <a class="text-lighten-3" href="https://github.com/DiegoArroyo">GitHub</a>
+          </li>
+          <li>
+            <a class="text-lighten-3" href="www.linkedin.com/in/diego-arroyo">LinkedIn</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="container">
+      Experiences | © 2018 Made by Diego Arroyo
+    </div>
+  </div>
 </footer>

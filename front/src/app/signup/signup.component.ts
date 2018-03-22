@@ -20,7 +20,7 @@ export class SignupComponent implements OnInit {
 
   signUp(signupForm) {
     this.session.signUp(signupForm.value)
-    .subscribe(() => this.router.navigate(['']));
+    .subscribe(() => this.router.navigate(['signin']));
   }
 
 }
