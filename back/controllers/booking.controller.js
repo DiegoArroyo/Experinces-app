@@ -16,7 +16,7 @@ exports.deleteBooking = (req, res, next) => {
 
 exports.addBooking = (req, res, next) => {
   const newBooking = new Booking({
-  experienceID  :   req.param.id,
+  experienceID  :   req.params.id,
   _creator      :   req.user._id,
   passengers    :     [{ 
     name  :   req.body.name,

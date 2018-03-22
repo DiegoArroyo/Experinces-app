@@ -17,7 +17,7 @@
     </div>
     <div>
       <p>${{item.price}}</p>
-      <a class="waves-effect waves-light btn-large" [routerLink]="['/']" >Book Now</a>
+      <a (click)="book()" class="waves-effect waves-light btn-large" [routerLink]="['/']" >Book Now</a>
     </div>
     <div>
       <h5>What includes your experience:</h5>
