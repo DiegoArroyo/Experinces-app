@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ExperienceService } from '../services/experience.service';
 import { SessionService } from '../services/session.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BookingService } from '../services/booking.service';
 
 declare var jquery: any;
@@ -21,10 +21,11 @@ export class DetailComponent implements OnInit {
   bookingID;
 
   constructor(
-    private route: ActivatedRoute,
-    private service: ExperienceService,
+    private activateroute: ActivatedRoute,
+    private expService: ExperienceService,
     private session: SessionService,
-    private bookingServ: BookingService
+    private bookingServ: BookingService,
+    private route: Router
   ) { }
 
   ngOnInit() {
@@ -32,8 +33,8 @@ export class DetailComponent implements OnInit {
 
     this.session.getLoginEmitter().subscribe(user => this.user = user);
 
-    this.route.params.subscribe(params => {
-    this.service.detail(params['id']).subscribe(item => {
+    this.activateroute.params.subscribe(params => {
+    this.expService.detail(params['id']).subscribe(item => {
       this.item = item;
       this.bookingID = item._id;
       console.log(this.bookingID);
@@ -41,12 +42,10 @@ export class DetailComponent implements OnInit {
     });
   }
 
-  // favorite() {
-  //   this.route.params.subscribe(params => {
-  //     this.service.addFav(params['id'], this.user).subscribe(item => this.item = item);
-  //     });
+  addFavorite() {
+    this.expService.addFav(this.item._id).subscribe(() => this.route.navigate(['']));
 
-  // }
+  }
 
   // book() {
   //  this.bookingServ.add(this.bookingID, this.user).

@@ -45,10 +45,11 @@ exports.signin = (req, res, next) => {
   })(req, res, next);
 };
 
-exports.signout = (req, res, next) => {
+exports.logout = (req, res) => {
   req.logout();
   res.status(200).json({ message: "Success" });
 }
+
 
 exports.signedin = (req, res, next) => {
   if (req.isAuthenticated()) {

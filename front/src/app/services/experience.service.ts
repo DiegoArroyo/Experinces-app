@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class ExperienceService {
-
+  options = {withCredentials: true};
   baseURL = environment.baseURL + 'api/experience';
 
   constructor(private http: Http) { }
@@ -18,8 +18,8 @@ export class ExperienceService {
   }
 
 // falta llamar el metodo en el componente 
-  addFav(id, user): Observable<any> {
-    return this.http.post(`${this.baseURL}/addFavorite/${id}`, user)
+  addFav(id): Observable<any> {
+    return this.http.post(`${this.baseURL}/addFavorite/${id}`, {}, this.options)
     .map((res: Response) => res.json())
     .catch(err => this.handleError(err));
   }

@@ -37,7 +37,6 @@ export class AppComponent implements OnInit {
   successCb(user) {
     this.user = user;
     this.error = null;
-    this.router.navigate(['/']);
   }
 
 }

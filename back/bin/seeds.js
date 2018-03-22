@@ -11,15 +11,19 @@ const user = [
     password  : bcrypt.hashSync("hola", salt),
     email     : "experiencies@gmail.com",
     avatar    : "/images/default-profile.png",
-    role      : "ENTERPRISE"
 },
 {
     username  : "Diego",
     password  : bcrypt.hashSync("hola", salt),
     email     : "arroyo@gmail.com",
     avatar    : "/images/default-profile.png",
-    role      : "ADMIN"
 
+},
+{
+    username  : "Andrei",
+    password  : bcrypt.hashSync("hola", salt),
+    email     : "andrei@gmail.com",
+    avatar    : "/images/default-profile.png",
 }
 ];
 

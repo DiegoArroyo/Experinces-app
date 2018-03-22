@@ -1,5 +1,5 @@
 <section class="main-container" *ngIf="item">
-  <div class="slider">
+  <div class="slider-carrusel">
       <ul class="slides">
         <li *ngFor="let pic of item.pictures">
           <img src="http://localhost:3000{{pic}}" >
@@ -35,23 +35,6 @@
   <div>
     <a class="waves-effect waves-light btn-large" [routerLink]= "['/experience/edit', item._id]" >Edit</a>
     <a class="waves-effect waves-light btn-large" [routerLink]= "['/']" >Delete</a>
+    <a (click)="addFavorite()" class="waves-effect waves-light btn-large">Add Favorite</a>
   </div>
 </section>
-
-
-
-
-<div class="slider">
-  <ul class="slides">
-
-    <li>
-      <img src="https://lorempixel.com/580/250/nature/2"> <!-- random image -->
-    </li>
-    <li>
-      <img src="https://lorempixel.com/580/250/nature/3"> <!-- random image -->
-    </li>
-    <li>
-      <img src="https://lorempixel.com/580/250/nature/4"> <!-- random image -->
-    </li>
-  </ul>
-</div>

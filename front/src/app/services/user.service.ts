@@ -10,8 +10,9 @@ export class UserService {
 
   constructor(private http: Http) { }
 
-  baseURL = environment.baseURL + 'api/user';
   options = { withCredentials: true };
+  baseURL = environment.baseURL + 'api/user';
+
 
   handleError(err) {
     return Observable.throw(err.json().message);

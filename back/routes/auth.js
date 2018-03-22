@@ -10,7 +10,7 @@ function checkIfSignedIn(req, res, next){
 
 router.post('/signup', controller.signup);
 router.post('/signin', controller.signin);
-router.post('/signout', controller.signout);
+router.post('/signout', controller.logout );
 router.get('/signedin', controller.signedin);
 
 module.exports = router;

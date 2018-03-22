@@ -21,26 +21,10 @@ exports.patchUser = (req, res, next) => {
 }
 
 exports.fetchUser = (req, res, next) => {
-  if (req.user.role === "USER") {
     User.findById(req.user._id)
     .populate('favItems')
     .populate('bookings')
     .then(user => res.status(200).json(user))
     .catch(err => res.status(500).send(err));
-  }else if (req.user.role === "ENTERPRISE"){
-    Experience.find({_creator: req.user._id})
-    .populate('_creator')
-    .then(experience => {
-      const theUser = {
-        user: req.user,
-        experience: experience
-      }
-      res.status(200).json(theUser)
-    })
-    .catch(err => res.status(500).send(err));
-  } else {
-    res.status(403).json({ message: 'Unauthorized' });
-    return
-  }
-  
 }
+  

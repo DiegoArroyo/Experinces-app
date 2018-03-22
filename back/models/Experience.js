@@ -4,7 +4,7 @@ const TYPES    = require('./item_types');
 
 const experienceSchema = new Schema({
   _creator    :   { type: Schema.Types.ObjectId, ref:'User' },
-  category    :   { type: String, enum: TYPES, required: true },
+  category    :   { type: String, enum: TYPES },
   title       :   { type: String, required: true },
   description :   { type: String, required: true },
   price       :   { type: Number, required: true },

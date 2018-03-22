@@ -7,12 +7,7 @@ const userSchema = new Schema({
   email       :   { type:String, required:true },
   avatar      :   { type:String, default: "/images/default-profile.png" },
   favItems    :  [{ type: Schema.Types.ObjectId, ref: 'Experience' }],
-  bookings    :  [{ type: Schema.Types.ObjectId, ref: 'Book' }],
-  role        :  {
-    type      : String,
-    enum      : ["USER", "ENTERPRISE", "ADMIN"],
-    default   : "USER"
-  }
+  bookings    :  [{ type: Schema.Types.ObjectId, ref: 'Booking' }],
 },
 {
   timestamps  :  {
