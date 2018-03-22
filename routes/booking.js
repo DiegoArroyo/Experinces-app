@@ -10,7 +10,7 @@ checkUser = (req, res, next) =>{
   }
 };
 
-router.post('/new', controller.addBooking);
+router.post('/new/:id', controller.addBooking);
 router.patch('/edit/:id', controller.patchBooking);
 router.delete('/delete/:id', controller.deleteBooking);
 
