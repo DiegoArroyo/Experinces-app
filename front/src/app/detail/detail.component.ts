@@ -28,7 +28,7 @@ export class DetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    $('.slider').slider();
+    // $('.slider').slider();
 
     this.session.getLoginEmitter().subscribe(user => this.user = user);
 
@@ -37,23 +37,21 @@ export class DetailComponent implements OnInit {
       this.item = item;
       this.bookingID = item._id;
       console.log(this.bookingID);
-
     });
-  
     });
   }
 
-  favorite() {
-    this.route.params.subscribe(params => {
-      this.service.addFav(params['id'], this.user).subscribe(item => this.item = item);
-      });
+  // favorite() {
+  //   this.route.params.subscribe(params => {
+  //     this.service.addFav(params['id'], this.user).subscribe(item => this.item = item);
+  //     });
 
-  }
+  // }
 
-  book() {
-   this.bookingServ.add(this.bookingID, this.user).
-   subscribe(bookings => {
-     this.booking = bookings;
-   });
-  }
+  // book() {
+  //  this.bookingServ.add(this.bookingID, this.user).
+  //  subscribe(bookings => {
+  //    this.booking = bookings;
+  //  });
+  // }
 }
