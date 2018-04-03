@@ -1,7 +1,6 @@
-<section class="account-container" *ngIf="profile" >
-  <div class="page-title" class="center-align">
+<section class="account-container container column is-three-fifths" *ngIf="profile" >
+  <div class="page-title" class="center-align ">
     <h2>My Control Panel</h2>
-    <p>{{ profile | json}}</p>
     <div>
       <p>Create new Experience: </p>
       <a [routerLink]="['/experience/new']">New Experience</a>
@@ -10,42 +9,39 @@
   <article class="box">
     <div class="welcome-message">
       <p>Hi {{ profile.username }} !</p>
-      <img [src]="'http://localhost:3000/'+ profile.avatar" alt="">
+      <img [src]="'http://localhost:3000/'+ profile.avatar" alt="" width="300">
       <p>
       From your My Account on your desktop you have the possibility to view 
       a summary of your recent activity of the account and update your account
       information. Choose one of the following links to view or modify the information.
       </p>
     </div>
-    <div class="account-info-container">
-      <div class="box-head">
-        <h2>Account Information</h2>
-        <div class="box-title">
-          <h3>Contact Information</h3>
-          <!-- <a [routerLink]="['/:id/edit', profile._id]">Modify</a> -->
-          <div class="box-content">
-            {{profile.username}}
-            <br>
-            {{profile.email}}
-            <br>
-            {{profile.role}}
-          </div>
-        </div>
-      </div>
-    </div>
-    <div>
+    <section class="columns">
+    <div class="column" >
         <ul class="collection">
-            <li class="collection-header"><h4>My Wish List</h4></li>
-            <li class="collection-item avatar" *ngFor="let favorite of profile.favItems">
-              <img [src]="'http://localhost:3000/'+ favorite.pictures[0]" alt="" class="circle">
-              <span class="title">{{favorite.title}}</span>
-              <p>First Line <br>
-                 Second Line
-              </p>
-              <a href="#!" class="secondary-content"><i class="material-icons">favorite</i></a>
-            </li>
-          </ul>
-               
+          <li class="collection-header center-align"><h4>My Bookings</h4></li>
+          <li class="collection-item avatar" *ngFor="let favorite of profile.bookings">
+            <img [src]="'http://localhost:3000/'+ favorite.pictures[0]" alt="" class="circle">
+            <span class="title">{{favorite.title}}</span>
+            <p>First Line <br>
+                Second Line
+            </p>
+            <a href="#!" class="secondary-content"><i class="material-icons">favorite</i></a>
+          </li>
+        </ul>    
+      </div>
+    <div class="column">
+      <ul class="collection">
+        <li class="collection-header center-align"><h4>My Wish List</h4></li>
+        <li class="collection-item avatar" *ngFor="let favorite of profile.favItems">
+          <img [src]="'http://localhost:3000/'+ favorite.pictures[0]" alt="" class="circle">
+          <span class="title">{{favorite.title}}</span>
+          <p>{{favorite.location}}<br>
+            ${{favorite.price}}.00 MXN
+          </p>
+        </li>
+      </ul>    
     </div>
+  </section>
   </article>
 </section>

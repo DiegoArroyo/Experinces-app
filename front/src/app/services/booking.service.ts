@@ -16,8 +16,8 @@ export class BookingService {
     return Observable.throw(err.json().message);
   }
 
-  add(id, user): Observable<any> {
-    return this.http.post(`${this.baseURL}/new/${id}`, user)
+  add(id): Observable<any> {
+    return this.http.post(`${this.baseURL}/new/${id}`, {})
     .map((res: Response) => res.json())
     .catch(err => this.handleError(err));
   }

@@ -18,5 +18,5 @@ export const routes: Routes = [
 { path: 'experience/new', component: NewExperienceComponent},
 { path: 'experience/edit/:id', component: EditExperienceComponent},
 { path: 'experience/single/:id', component: DetailComponent },
-{ path: 'experience/single/booking/:id', component: DetailComponent },
+{ path: 'experience/single/booking/:id', component: BookingComponent },
 ];

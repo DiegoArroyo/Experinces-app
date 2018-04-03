@@ -17,8 +17,10 @@ const booking     = require('./routes/booking');
 const app = express(); 
 
 const mongoose      = require('mongoose');
-mongoose.connect("mongodb://localhost/experience-local-app")
-  .then(console.log(`Connected to ${process.env.mongoURL}`))
+mongoose.connect(process.env.mongoURL)
+.then(console.log(`Connected to ${process.env.mongoURL}`))
+// mongoose.connect("mongodb://localhost/experience-local-app")
+//   .then(console.log(`Connected to ${process.env.mongoURL}`))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

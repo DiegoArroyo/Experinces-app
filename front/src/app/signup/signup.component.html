@@ -1,14 +1,43 @@
-<form (ngSubmit)="signUp(signupForm)" #signupForm="ngForm">
-  <h2> Signup </h2>
-  <label> Username </label>
-  <input type="text" [(ngModel)]="username" name="username"/>
-  <br>
-  <label> Password </label>
-  <input type="password" [(ngModel)]="password" name="password"/>
-  <br>
-  <label> Email </label>
-  <input type="email" [(ngModel)]="email" name="email"/>
-  <br>
-  <button type="submit"> SignUp </button>
-</form>
-<p class="error"> {{ error }} </p>
+<section class="row">
+  <form (ngSubmit)="signUp(signupForm)" #signupForm="ngForm">
+    <div class="field offset-m3 col s6">
+      <p class="control has-icons-left has-icons-right">
+        <input class="input" type="email" placeholder="Email" [(ngModel)]="email" name="email">
+        <span class="icon is-small is-left">
+          <i class="fas fa-envelope"></i>
+        </span>
+      </p>
+    </div>
+    <br>
+    <br>
+    <div class="field offset-m3 col s6">
+      <p class="control has-icons-left has-icons-right">
+        <input class="input" type="text" placeholder="Username" [(ngModel)]="username" name="username">
+        <span class="icon is-small is-left">
+          <i class="fas fa-user"></i>
+        </span>
+      </p>
+    </div>
+    <br>
+    <br>
+    <div class="field offset-m3 col s6">
+      <p class="control has-icons-left">
+        <input class="input" type="password" placeholder="Password" [(ngModel)]="password" name="password">
+        <span class="icon is-small is-left">
+          <i class="fas fa-lock"></i>
+        </span>
+      </p>
+    </div>
+    <br>
+    <br>
+    <div class="field offset-m3 col s6">
+      <p class="control center-align">
+        <button type="submit" class="button is-success">
+          Signup
+        </button>
+      </p>
+    </div>
+  </form>
+  <p class="error"> {{ error }} </p>
+</section>
+    

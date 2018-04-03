@@ -1,13 +1,3 @@
-.account-container{
-  
-}
-.box{
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .welcome-message{
   padding: 10px 200px;
 }

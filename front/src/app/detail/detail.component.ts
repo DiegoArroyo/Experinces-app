@@ -29,15 +29,16 @@ export class DetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // $('.slider').slider();
 
     this.session.getLoginEmitter().subscribe(user => this.user = user);
 
     this.activateroute.params.subscribe(params => {
     this.expService.detail(params['id']).subscribe(item => {
       this.item = item;
+
       this.bookingID = item._id;
       console.log(this.bookingID);
+      setTimeout(() => $('.slider').slider(), 1500);
     });
     });
   }

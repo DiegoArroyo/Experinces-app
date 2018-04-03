@@ -1,26 +1,11 @@
-.main-container{
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  align-content: space-around;
-  flex-direction: row;
-  margin: 20px;
-  height: 700px;;
-  padding: 30px;
-  position: relative;
-
+h1{
+  text-align: center;
 }
-
-.img-container {
-  position: absolute;
-  top: 30px;
-  left: 100px; 
-  width: 600px;
+.main-container{
+  margin-top: 30px;
 }
 
 .experience-container{
-  position: absolute;
   width: 600px;
   height: auto;
   top: 15px;
@@ -29,8 +14,9 @@
 
 .experience{
   text-align: justify;
-  margin: 5;
+  margin: 5px;
 }
+
 
 .buttons-container{
   display: flex;
@@ -40,4 +26,4 @@
 
 .buttons-container a{
   margin: 10px;
-}
+} 

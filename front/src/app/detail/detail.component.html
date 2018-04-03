@@ -1,12 +1,14 @@
-<section class="main-container" *ngIf="item">
-  <div class="img-container">
-    <ul class="img list">
-      <li *ngFor="let pic of item.pictures">
-        <img src="http://localhost:3000{{pic}}" width="400" height="400">
-      </li>
-    </ul>
+<section class="main-container row"  *ngIf="item">
+  <div class="slider col s6" *ngIf="item">
+    <div class="container">
+      <ul class="slides">
+        <li *ngFor="let pic of item.pictures" >
+          <img src="http://localhost:3000{{pic}}" >
+        </li>
+      </ul>
+    </div>
   </div>
-  <article class="experience-container">
+  <article class="experience-container col s6">
     <div class="experience">
       <h1>{{item.title}}</h1>
       <p><b>{{item.description}}</b></p>
@@ -26,10 +28,14 @@
       <p>{{item.duration}}</p>
     </div>
     <div class="experience">
+      <h5>Location:</h5>
+      <p>{{item.location}}</p>
+    </div>
+    <div class="experience">
       <h5>This is an experience of :</h5>
       <p>{{item._creator.username}}</p>
     </div>
-    <div class="buttons-container">
+    <div class="buttons-container" *ngIf="!user">
       <!-- <a class="waves-effect waves-light btn-large" [routerLink]= "['/experience/edit', item._id]" >Edit</a>
       <a class="waves-effect waves-light btn-large" [routerLink]= "['/']" >Delete</a> -->
       <a (click)="addFavorite()" [routerLink]="['/private']" class="waves-effect waves-light red btn-large"><i class="material-icons left">favorite</i>Add to Fav</a>

@@ -1,27 +1,27 @@
 
   <form (ngSubmit)="newItem(myForm)" #myForm="ngForm">
-      <p> title
+      <p> Title
         <input type="text" name="title" [(ngModel)]="title" />
       </p>
       <p> Description
         <input type="text" name="description" [(ngModel)]="description" />
       </p>
-      <p> price
+      <p> Price
           <input type="text" name="price" [(ngModel)]="price" />
       </p>
-      <p> includes
+      <p> Includes
           <input type="text" name="includes" [(ngModel)]="includes" />
       </p>
-      <p> places
+      <p> Places
           <input type="text" name="places" [(ngModel)]="places" />
       </p>
-      <p> duration
+      <p> Duration
           <input type="text" name="duration" [(ngModel)]="duration" />
       </p>
-      <p> location
+      <p> Location
           <input type="text" name="location" [(ngModel)]="location" />
       </p>
-      <p> Img
+      <p> Image
             <input type="file" name="file" ng2FileSelect [uploader]="uploader" />      
         </p>
       <button type="submit"> signup </button>
