@@ -4,7 +4,6 @@ const router                = express.Router();
 const Experience            = require('../models/Experience')
 const multer                = require ('multer');
 const upload                = multer  ({  dest: './public/uploads'});
-const { ensureLoggedIn }    = require ('connect-ensure-login');
 const bcrypt                = require ('bcrypt');
 const salt                  = bcrypt.genSaltSync(10);
 

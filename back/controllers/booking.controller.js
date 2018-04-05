@@ -1,6 +1,7 @@
 const Booking        = require('../models/Booking');
-const Experience  = require('../models/Experience');
-const User        = require('../models/User');
+const Experience     = require('../models/Experience');
+const User           = require('../models/User');
+
 
 exports.patchBooking = (req, res, next) => {
   Booking.findByIdAndUpdate(req.params.id, req.body, {new: true})

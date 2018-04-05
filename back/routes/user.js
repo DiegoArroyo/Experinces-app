@@ -1,6 +1,5 @@
 const express            = require('express');
 const router             = express.Router();
-const { ensureLoggedIn } = require ('connect-ensure-login');
 const controller         = require('../controllers/user.controller');
 
 function checkIfSignedIn(req, res, next){

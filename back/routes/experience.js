@@ -19,6 +19,5 @@ router.patch('/edit/:id', controller.patchItem);
 router.delete('/delete/:id', controller.deleteItem);
 router.post('/addPhoto/:id', upload.any(), controller.addPhoto);
 router.post('/addFavorite/:id', controller.addFavorite);
-router.post('/booking/:id', controller.addBooking);
 
 module.exports = router

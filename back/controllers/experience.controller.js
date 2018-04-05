@@ -2,28 +2,7 @@ const Experience  = require('../models/Experience');
 const User        = require('../models/User');
 const Booking     = require('../models/Booking');
 
-exports.addBooking = (req, res, next) => {
-  const newBooking = new Booking({
-  experienceID  :   req.params.id,
-  _creator      :   req.user._id,
-  passengers    :     [{ 
-    name  :   req.body.name,
-    age   :   req.body.age,
-    sex   :   req.body.sex,
-    email :   req.body.email
-  }],
-  startDate     :   req.body.startDate,
-  endDate       :   req.body.endDate
-  });
-
-  newBooking.save()
-  .then(booking => res.status(201).json(booking))
-  .catch(err => res.status(500).send(err));
-}
-
 exports.addFavorite = (req, res, next) => {
-  console.log(req.user)
-  console.log(req.params.id)
   User.findByIdAndUpdate(req.user._id, {$push: {favItems: req.params.id}})
   .then(experience => res.status(200).json(experience))
   .catch(err => res.status(500).send(err));

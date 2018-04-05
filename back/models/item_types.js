@@ -1,12 +1,10 @@
 module.exports = [
-  "Antique",
-  "Art Deco",
-  "Contemporary",
-  "Hot Style",
-  "Modern",
-  "Retro",
-  "Rustic",
-  "Outdoors",
-  "Traditional",
-  "Vintage"
+  "Adrenalina",
+  "Acuáticas",
+  "Aire Libre",
+  "Bienestar y Spa",
+  "Diversion",
+  "Gourmet",
+  "Vuelo",
+  "Escapadas y Estancias",
 ];  
