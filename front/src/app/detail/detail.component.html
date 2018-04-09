@@ -35,11 +35,9 @@
       <h5>This is an experience of :</h5>
       <p>{{item._creator.username}}</p>
     </div>
-    <div class="buttons-container" *ngIf="!user">
-      <!-- <a class="waves-effect waves-light btn-large" [routerLink]= "['/experience/edit', item._id]" >Edit</a>
-      <a class="waves-effect waves-light btn-large" [routerLink]= "['/']" >Delete</a> -->
+    <div class="buttons-container" *ngIf="user">
       <a (click)="addFavorite()" [routerLink]="['/private']" class="waves-effect waves-light red btn-large"><i class="material-icons left">favorite</i>Add to Fav</a>
-      <a (click)="book()" class="waves-effect waves-light btn-large" [routerLink]="['/']" >Book Now</a>
+      <a class="waves-effect waves-light btn-large" [routerLink]="['/private']" >Book Now</a>
     </div>
   </article>
 </section>

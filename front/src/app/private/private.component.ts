@@ -23,9 +23,7 @@ export class PrivateComponent implements OnInit {
 
   ngOnInit() {
     this.userService.currentUser().subscribe(user => {
-      console.log(user);
       this.profile = user;
-      console.log(this.profile)
     });
   }
 

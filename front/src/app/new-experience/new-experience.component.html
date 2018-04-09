@@ -1,28 +1,27 @@
-
-  <form (ngSubmit)="newItem(myForm)" #myForm="ngForm">
-      <p> Title
-        <input type="text" name="title" [(ngModel)]="title" />
-      </p>
-      <p> Description
-        <input type="text" name="description" [(ngModel)]="description" />
-      </p>
-      <p> Price
-          <input type="text" name="price" [(ngModel)]="price" />
-      </p>
-      <p> Includes
-          <input type="text" name="includes" [(ngModel)]="includes" />
-      </p>
-      <p> Places
-          <input type="text" name="places" [(ngModel)]="places" />
-      </p>
-      <p> Duration
-          <input type="text" name="duration" [(ngModel)]="duration" />
-      </p>
-      <p> Location
-          <input type="text" name="location" [(ngModel)]="location" />
-      </p>
-      <p> Image
-            <input type="file" name="file" ng2FileSelect [uploader]="uploader" />      
-        </p>
-      <button type="submit"> signup </button>
-    </form>
+<form (ngSubmit)="newItem(myForm)" #myForm="ngForm">
+    <p> Title
+    <input type="text" name="title" [(ngModel)]="title" />
+    </p>
+    <p> Description
+    <input type="text" name="description" [(ngModel)]="description" />
+    </p>
+    <p> Price
+        <input type="text" name="price" [(ngModel)]="price" />
+    </p>
+    <p> Includes
+        <input type="text" name="includes" [(ngModel)]="includes" />
+    </p>
+    <p> Places
+        <input type="text" name="places" [(ngModel)]="places" />
+    </p>
+    <p> Duration
+        <input type="text" name="duration" [(ngModel)]="duration" />
+    </p>
+    <p> Location
+        <input type="text" name="location" [(ngModel)]="location" />
+    </p>
+    <p> Image
+        <input type="file" name="file" ng2FileSelect [uploader]="uploader" />      
+    </p>
+    <button type="submit"> Create </button>
+</form>

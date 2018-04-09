@@ -32,30 +32,13 @@ export class EditExperienceComponent implements OnInit {
     this.service.patch(itemForm.value, this.item._id)
       .subscribe(itemChanged => {
         this.item = itemChanged;
-        this.route.navigate(['experience/', this.item._id]);
-        console.log(itemChanged);
+        this.route.navigate(['experience/single', this.item._id]);
       });
   }
 
   addPhoto() {
-    // console.log(this.uploader)
-    // this.uploader.queue[0].method ="PATCH"
     this.uploader.uploadAll();
-    this.uploader.onCompleteItem = () => this.route.navigate(['private']);
+    this.uploader.onCompleteItem = () => this.route.navigate(['experience/single', this.item._id]);
   }
 
 }
-
-
-
-// this.uploader.onBuildItemForm = (item, form) => {
-//   form.append('title', itemForm.value.title);
-//   form.append('description', itemForm.value.description);
-//   form.append('price', itemForm.value.price);
-//   form.append('includes', itemForm.value.includes);
-//   form.append('places', itemForm.value.places);
-//   form.append('duration', itemForm.value.duration);
-//   form.append('location', itemForm.value.location);
-// };
-// this.uploader.uploadAll();
-// this.uploader.onCompleteItem = () => this.route.navigate(['private']);

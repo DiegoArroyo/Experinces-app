@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ExperienceService } from '../services/experience.service';
 import { SessionService } from '../services/session.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BookingService } from '../services/booking.service';
 
 declare var jquery: any;
 declare var $: any;
@@ -24,7 +23,6 @@ export class DetailComponent implements OnInit {
     private activateroute: ActivatedRoute,
     private expService: ExperienceService,
     private session: SessionService,
-    private bookingServ: BookingService,
     private route: Router
   ) { }
 
@@ -37,21 +35,14 @@ export class DetailComponent implements OnInit {
       this.item = item;
 
       this.bookingID = item._id;
-      console.log(this.bookingID);
       setTimeout(() => $('.slider').slider(), 1500);
     });
     });
   }
 
   addFavorite() {
-    this.expService.addFav(this.item._id).subscribe(() => this.route.navigate(['']));
-
+    this.expService.addFav(this.item._id)
+    .subscribe(() => this.route.navigate(['private']));
   }
 
-  // book() {
-  //  this.bookingServ.add(this.bookingID, this.user).
-  //  subscribe(bookings => {
-  //    this.booking = bookings;
-  //  });
-  // }
 }
