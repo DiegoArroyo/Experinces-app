@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ExperienceService } from '../services/experience.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,7 @@ import { ExperienceService } from '../services/experience.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  baseURL = environment.baseURL;
 
   constructor(private itemService: ExperienceService) { }
 

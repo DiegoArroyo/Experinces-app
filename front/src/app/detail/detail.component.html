@@ -1,9 +1,9 @@
-<section class="main-container row"  *ngIf="item">
+<section class="main-container row" *ngIf="item">
   <div class="slider col s6" *ngIf="item">
     <div class="container">
       <ul class="slides">
         <li *ngFor="let pic of item.pictures" >
-          <img src="http://localhost:3000{{pic}}" >
+          <img [src]="baseURL + pic">
         </li>
       </ul>
     </div>

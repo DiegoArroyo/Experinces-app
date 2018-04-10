@@ -9,7 +9,7 @@
   <article class="box">
     <div class="welcome-message">
       <p>Hi {{ profile.username }} !</p>
-      <img [src]="'http://localhost:3000/'+ profile.avatar" alt="" width="300">
+      <img [src]="baseURL + profile.avatar" alt="" width="300">
       <p>
       From your My Account on your desktop you have the possibility to view 
       a summary of your recent activity of the account and update your account
@@ -21,7 +21,7 @@
         <ul class="collection">
           <li class="collection-header center-align"><h4>My Bookings</h4></li>
           <li class="collection-item avatar" *ngFor="let favorite of profile.bookings">
-            <img [src]="'http://localhost:3000/'+ favorite.pictures[0]" alt="" class="circle">
+            <img [src]="baseURL + favorite.pictures[0]" alt="" class="circle">
             <span class="title">{{favorite.title}}</span>
             <p>First Line <br>
                 Second Line
@@ -34,7 +34,7 @@
       <ul class="collection">
         <li class="collection-header center-align"><h4>My Wish List</h4></li>
         <li class="collection-item avatar" *ngFor="let favorite of profile.favItems">
-          <img [src]="'http://localhost:3000/'+ favorite.pictures[0]" alt="" class="circle">
+          <img [src]="baseURL+ favorite.pictures[0]" alt="" class="circle">
           <span class="title">{{favorite.title}}</span>
           <p>{{favorite.location}}<br>
             ${{favorite.price}}.00 MXN

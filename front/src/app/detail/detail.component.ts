@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ExperienceService } from '../services/experience.service';
 import { SessionService } from '../services/session.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 declare var jquery: any;
 declare var $: any;
@@ -12,7 +13,7 @@ declare var $: any;
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
-
+  baseURL = environment.baseURL;
   item;
   user;
   error;
