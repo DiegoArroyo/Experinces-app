@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 import { MaterializeModule } from 'angular2-materialize';
 import { FileUploadModule } from "ng2-file-upload";
 import { AppComponent } from './app.component';
-import { BookingComponent } from './booking/booking.component';
 import { DetailComponent } from './detail/detail.component';
 import { EditExperienceComponent } from './edit-experience/edit-experience.component';
 import { HomeComponent } from './home/home.component';
@@ -29,7 +28,6 @@ import { SignupComponent } from './signup/signup.component';
     PrivateComponent,
     NewExperienceComponent,
     EditExperienceComponent,
-    BookingComponent
   ],
   imports: [
     BrowserModule,

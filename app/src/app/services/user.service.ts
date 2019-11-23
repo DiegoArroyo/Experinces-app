@@ -1,14 +1,14 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
-import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Rx';
 import { environment } from '../../environments/environment';
 
 @Injectable()
 export class UserService {
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   options = { withCredentials: true };
   baseURL = environment.baseURL + 'api/user';
@@ -20,8 +20,8 @@ export class UserService {
 
   currentUser(): Observable<any> {
     return this.http.get(`${this.baseURL}/private`, this.options)
-    .map((res: Response) => res.json())
-    .catch(err => this.handleError(err));
+      .map((res: Response) => res.json())
+      .catch(err => this.handleError(err));
   }
 
 }
