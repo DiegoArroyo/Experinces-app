@@ -1,8 +1,9 @@
+
+import {throwError as observableThrowError,  Observable } from 'rxjs';
+
+import {catchError, map} from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs/Rx';
 import { environment } from '../../environments/environment';
 
 @Injectable()
@@ -15,13 +16,13 @@ export class UserService {
 
 
   handleError(err) {
-    return Observable.throw(err.json().message);
+    return observableThrowError(err.json().message);
   }
 
   currentUser(): Observable<any> {
-    return this.http.get(`${this.baseURL}/private`, this.options)
-      .map((res: Response) => res.json())
-      .catch(err => this.handleError(err));
+    return this.http.get(`${this.baseURL}/private`, this.options).pipe(
+      map((res: Response) => res.json()),
+      catchError(err => this.handleError(err)),);
   }
 
 }

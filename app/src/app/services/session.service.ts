@@ -1,8 +1,9 @@
+
+import {throwError as observableThrowError,  Observable } from 'rxjs';
+
+import {catchError, map} from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs/Rx';
 import { environment } from '../../environments/environment';
 
 @Injectable()
@@ -16,7 +17,7 @@ export class SessionService {
   constructor(private http: HttpClient) { }
 
   handleError(e) {
-    return Observable.throw(e.json().message);
+    return observableThrowError(e.json().message);
   }
 
   getLoginEmitter(): EventEmitter<any> {
@@ -24,32 +25,32 @@ export class SessionService {
   }
 
   signedIn(): Observable<any> {
-    return this.http.get(`${this.baseURL}/signedin`, this.options)
-      .map(res => res.json())
-      .map(user => user)
-      .catch(err => this.handleError(err));
+    return this.http.get(`${this.baseURL}/signedin`, this.options).pipe(
+      map(res => res.json()),
+      map(user => user),
+      catchError(err => this.handleError(err)),);
   }
 
   signOut(): Observable<any> {
-    return this.http.post(`${this.baseURL}/signout`, {}, this.options)
-      .map(res => res.json())
-      .catch(err => this.handleError(err));
+    return this.http.post(`${this.baseURL}/signout`, {}, this.options).pipe(
+      map(res => res.json()),
+      catchError(err => this.handleError(err)),);
   }
 
   signIn(signinForm): Observable<any> {
-    return this.http.post(`${this.baseURL}/signin`, signinForm, this.options)
-      .map(res => res.json())
-      .map(user => { this.loginEvent.emit(user); this.user = user; return user; })
-      .catch(err => this.handleError(err));
+    return this.http.post(`${this.baseURL}/signin`, signinForm, this.options).pipe(
+      map(res => res.json()),
+      map(user => { this.loginEvent.emit(user); this.user = user; return user; }),
+      catchError(err => this.handleError(err)),);
   }
 
   signUp(signupForm): Observable<any> {
-    return this.http.post(`${this.baseURL}/signup`, signupForm, this.options)
-      .map(res => res.json())
-      .catch(err => {
+    return this.http.post(`${this.baseURL}/signup`, signupForm, this.options).pipe(
+      map(res => res.json()),
+      catchError(err => {
         alert(JSON.parse(err._body).message);
         return this.handleError(err);
-      });
+      }),);
   }
 
 }
