@@ -1,31 +1,23 @@
-import { MaterializeModule } from 'angular2-materialize';
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { MaterializeModule } from 'angular2-materialize';
 import { FileUploadModule } from "ng2-file-upload";
-
-
+import { AppComponent } from './app.component';
+import { BookingComponent } from './booking/booking.component';
+import { DetailComponent } from './detail/detail.component';
+import { EditExperienceComponent } from './edit-experience/edit-experience.component';
+import { HomeComponent } from './home/home.component';
+import { NewExperienceComponent } from './new-experience/new-experience.component';
+import { PrivateComponent } from './private/private.component';
+import { routes } from './routes/app.route';
 import { ExperienceService } from './services/experience.service';
 import { SessionService } from './services/session.service';
 import { UserService } from './services/user.service';
-import { BookingService } from './services/booking.service';
-
-
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { DetailComponent } from './detail/detail.component';
-import { NewExperienceComponent } from './new-experience/new-experience.component';
-import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
-import { PrivateComponent } from './private/private.component';
-import { EditExperienceComponent } from './edit-experience/edit-experience.component';
-import { BookingComponent } from './booking/booking.component';
-
-
-import { routes } from './routes/app.route';
-import { RouterModule } from '@angular/router';
-
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +33,7 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     FormsModule,
     MaterializeModule,
     RouterModule.forRoot(routes),
@@ -51,7 +43,6 @@ import { RouterModule } from '@angular/router';
     ExperienceService,
     SessionService,
     UserService,
-    BookingService
   ],
   bootstrap: [AppComponent]
 })
