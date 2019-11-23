@@ -1,10 +1,9 @@
-
-import {throwError as observableThrowError,  Observable } from 'rxjs';
-
-import {catchError, map} from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, throwError as observableThrowError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+
 
 @Injectable()
 export class UserService {
@@ -20,9 +19,10 @@ export class UserService {
   }
 
   currentUser(): Observable<any> {
-    return this.http.get(`${this.baseURL}/private`, this.options).pipe(
-      map((res: Response) => res.json()),
-      catchError(err => this.handleError(err)),);
+    return this.http.get(`${this.baseURL}/private`, this.options)
+      .pipe(
+        catchError(err => this.handleError(err))
+      );
   }
 
 }
